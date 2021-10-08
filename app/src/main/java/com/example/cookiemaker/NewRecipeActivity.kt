@@ -12,7 +12,7 @@ class NewRecipeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_new_recipe)
 
         val ft = supportFragmentManager.beginTransaction()
-        ft.add(R.id.fraNewRecipe,NewRecipeFragment())
+        ft.add(R.id.flaContentNewRecipe,NewRecipeFragment())
         ft.commit()
     }
 }

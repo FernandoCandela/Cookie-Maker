@@ -10,10 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="10"
-        tools:listitem="@layout/item_recipe"
-        >
+        tools:listitem="@layout/item_new_recipe_ingredient"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

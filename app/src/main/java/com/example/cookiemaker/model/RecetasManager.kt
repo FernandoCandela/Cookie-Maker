@@ -46,5 +46,4 @@ class RecetasManager {
         return mIngredientes
     }
 
-
 }
