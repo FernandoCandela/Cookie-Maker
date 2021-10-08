@@ -2,4 +2,6 @@
     <string name="app_name">CookieMaker</string>
     <string name="login_button">Ingresar</string>
     <string name="name_hint">Ingresa tu nombre</string>
+    <string name="recipes_title">Recetas</string>
+    <string name="add_recipe">+ Agregar</string>
 </resources>
