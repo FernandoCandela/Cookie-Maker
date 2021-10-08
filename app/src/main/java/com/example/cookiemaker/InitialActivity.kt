@@ -25,6 +25,8 @@ class InitialActivity : AppCompatActivity() {
             bundle.putString("name" , eteName.text.toString())
             intent.putExtra("data",bundle)
 
+
+
             startActivity(intent)
         }
     }

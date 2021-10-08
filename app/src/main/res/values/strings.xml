@@ -4,4 +4,6 @@
     <string name="name_hint">Ingresa tu nombre</string>
     <string name="recipes_title">Recetas</string>
     <string name="add_recipe">+ Agregar</string>
+    <string name="new_recipe">Nueva Receta</string>
+    <string name="input_new_recipe">Ingrese nueva receta</string>
 </resources>
