@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity(), AddRecipeFragment.OnAddRecipeClicked {
         super.onCreate(savedInstanceState)
 
         username = intent.getBundleExtra("data")?.getString("name").toString()
-        Log.i("username", username)
         setContentView(R.layout.activity_main)
 
         fragments.add(RecipesFragment())
@@ -34,8 +33,19 @@ class MainActivity : AppCompatActivity(), AddRecipeFragment.OnAddRecipeClicked {
         intent.setClass(this, NewRecipeActivity::class.java)
         val bundle: Bundle = Bundle()
         bundle.putString("username",username)
-        intent.putExtra("data2",bundle)
-        Log.i("antes de","morir")
-        startActivity(intent)
+        intent.putExtra("data",bundle)
+        startActivityForResult(intent,10)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if( requestCode == 10){
+            if(resultCode == RESULT_OK) {
+
+                val ft = supportFragmentManager.beginTransaction()
+                ft.replace(R.id.flaContent, RecipesFragment())
+                ft.commit()
+            }
+        }
     }
 }

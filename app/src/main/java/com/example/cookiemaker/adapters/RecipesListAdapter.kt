@@ -48,9 +48,6 @@ class RecipesListAdapter(
             3 -> holder.iviRecipeImage.setImageResource(R.drawable.galletas3)
             4 -> holder.iviRecipeImage.setImageResource(R.drawable.galletas4)
         }
-        //holder.iviRecipeImage.getLayoutParams().width = 300;
-        //holder.iviRecipeImage.getLayoutParams().height = 300;
-
     }
 
     override fun getItemCount(): Int {

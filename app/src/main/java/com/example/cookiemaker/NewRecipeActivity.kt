@@ -8,14 +8,19 @@ import com.example.cookiemaker.fragments.NewRecipeFragment
 import com.example.cookiemaker.fragments.NewRecipeIngredientsFragment
 import com.example.cookiemaker.fragments.RecipesFragment
 import pe.edu.ulima.pm.ulgamestore.model.Ingrediente
+import pe.edu.ulima.pm.ulgamestore.model.Receta
+import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
 class NewRecipeActivity : AppCompatActivity(), NewRecipeFragment.OnIngredientsClicked{
 
     private var ingredients = arrayListOf<Ingrediente>()
+    private lateinit var usuario : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_recipe)
+
+        usuario = intent.getBundleExtra("data")?.getString("username").toString()
 
         val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.flaContentNewRecipe,NewRecipeIngredientsFragment(ingredients))
@@ -25,6 +30,15 @@ class NewRecipeActivity : AppCompatActivity(), NewRecipeFragment.OnIngredientsCl
     override fun OnIngredientsClick() {
         val intent: Intent = Intent(this,IngredientsActivity::class.java)
         startActivityForResult(intent,10)
+    }
+
+    override fun OnSaveClick(newRecipeName: String) {
+        val receta = Receta(1,newRecipeName,usuario,ingredients)
+        RecetasManager().getInstance().addReceta(receta)
+
+        val intent : Intent = Intent()
+        setResult(RESULT_OK,intent)
+        finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
