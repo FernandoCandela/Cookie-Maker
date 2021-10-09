@@ -7,22 +7,23 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cookiemaker.fragments.NewRecipeFragment
 import com.example.cookiemaker.fragments.NewRecipeIngredientsFragment
 import com.example.cookiemaker.fragments.RecipesFragment
+import pe.edu.ulima.pm.ulgamestore.model.Ingrediente
 
 class NewRecipeActivity : AppCompatActivity(), NewRecipeFragment.OnIngredientsClicked{
+
+    private var ingredients = arrayListOf<Ingrediente>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("newREcipeActivity", "se crea")
         setContentView(R.layout.activity_new_recipe)
 
         val ft = supportFragmentManager.beginTransaction()
-        ft.add(R.id.flaContentNewRecipe,NewRecipeIngredientsFragment())
+        ft.add(R.id.flaContentNewRecipe,NewRecipeIngredientsFragment(ingredients))
         ft.commit()
     }
 
     override fun OnIngredientsClick() {
-        Log.i("antes","Llega a la funcion")
         val intent: Intent = Intent(this,IngredientsActivity::class.java)
-        Log.i("justo antes","crea el intent")
         startActivityForResult(intent,10)
     }
 
@@ -30,8 +31,18 @@ class NewRecipeActivity : AppCompatActivity(), NewRecipeFragment.OnIngredientsCl
         super.onActivityResult(requestCode, resultCode, data)
         if( requestCode == 10){
             if(resultCode == RESULT_OK){
+                val ingrediente = data?.getBundleExtra("data")?.getString("nombre")
+                if (ingrediente != null) {
+                    Log.i("ingrediente activity", ingrediente)
+                }
+                ingredients.add(Ingrediente(ingrediente.toString()))
 
-                Log.i("llego","resultadoOk")
+                val ft = supportFragmentManager.beginTransaction()
+                ft.replace(R.id.flaContentNewRecipe,NewRecipeIngredientsFragment(ingredients))
+                ft.commit()
+
+
+
             }
         }
 

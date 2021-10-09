@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookiemaker.adapters.IngredientsListAdapter
@@ -25,13 +26,12 @@ class IngredientsActivity : AppCompatActivity() , IngredientsFragment.OnIngredie
 
     }
 
-    override fun onIngredientClick() {
+    override fun onIngredientClick(ingredient : String) {
         val intent : Intent = Intent()
         val bundle : Bundle = Bundle()
-        bundle.putString("nombre", findViewById<EditText>(R.id.tviNewRecipeIngredient).text.toString())
+        bundle.putString("nombre", ingredient)
         intent.putExtra("data",bundle)
-
-        setResult(RESULT_OK)
+        setResult(RESULT_OK,intent)
         finish()
     }
 }

@@ -2,7 +2,6 @@ package com.example.cookiemaker.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookiemaker.R
 import com.example.cookiemaker.adapters.IngredientsListAdapter
-import com.example.cookiemaker.adapters.RecipesListAdapter
 import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
 class IngredientsFragment : Fragment() {
 
     interface OnIngredientClicked {
-        fun onIngredientClick()
+        fun onIngredientClick(ingredient: String)
     }
 
     private var listener: OnIngredientClicked? = null
@@ -31,7 +29,7 @@ class IngredientsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_recipe_ingredients,container,false)
+        return inflater.inflate(R.layout.fragment_recipe_ingredients, container, false)
 
     }
 
@@ -41,9 +39,9 @@ class IngredientsFragment : Fragment() {
         val rviRecipeIngredients = view.findViewById<RecyclerView>(R.id.rviRecipeIngredients)
         rviRecipeIngredients.adapter = IngredientsListAdapter(
             RecetasManager().getIngredientes(),
-            {recipeId : Int ->
-
-                Log.i ( "RecipeFragment", RecetasManager().getIngredientes()[recipeId].toString())
+            { recipeId: Int ->
+                val ingredient = RecetasManager().getIngredientes()[recipeId].nombre
+                listener?.onIngredientClick(ingredient)
             }
         )
 

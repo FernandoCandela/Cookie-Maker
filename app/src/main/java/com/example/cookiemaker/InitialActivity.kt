@@ -6,6 +6,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+/*
+    Integrantes:
+       - Fernando Candela
+       - Renatto Pantoja
+*/
 
 class InitialActivity : AppCompatActivity() {
     private lateinit var eteName: EditText
