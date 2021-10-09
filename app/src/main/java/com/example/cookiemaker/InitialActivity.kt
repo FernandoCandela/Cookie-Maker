@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+
 /*
     Integrantes:
        - Fernando Candela
@@ -27,8 +28,8 @@ class InitialActivity : AppCompatActivity() {
             val intent: Intent = Intent()
             intent.setClass(this, MainActivity::class.java)
             val bundle: Bundle = Bundle()
-            bundle.putString("name" , eteName.text.toString())
-            intent.putExtra("data",bundle)
+            bundle.putString("name", eteName.text.toString())
+            intent.putExtra("data", bundle)
 
 
 

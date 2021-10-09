@@ -15,7 +15,8 @@ class RecipesListAdapter(
 ) :
     RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View, val listener : (Int)->Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    class ViewHolder(view: View, val listener: (Int) -> Unit) : RecyclerView.ViewHolder(view),
+        View.OnClickListener {
         val iviRecipeImage: ImageView
         val tviUserName: TextView
         val tviRecipeName: TextView
@@ -34,7 +35,7 @@ class RecipesListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe, parent, false)
-        val viewHolder = ViewHolder(view,listener)
+        val viewHolder = ViewHolder(view, listener)
         return viewHolder
     }
 

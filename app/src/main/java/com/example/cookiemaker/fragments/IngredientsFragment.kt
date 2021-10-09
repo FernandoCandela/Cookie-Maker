@@ -38,12 +38,11 @@ class IngredientsFragment : Fragment() {
 
         val rviRecipeIngredients = view.findViewById<RecyclerView>(R.id.rviRecipeIngredients)
         rviRecipeIngredients.adapter = IngredientsListAdapter(
-            RecetasManager().getIngredientes(),
-            { recipeId: Int ->
-                val ingredient = RecetasManager().getIngredientes()[recipeId].nombre
-                listener?.onIngredientClick(ingredient)
-            }
-        )
+            RecetasManager().getIngredientes()
+        ) { recipeId: Int ->
+            val ingredient = RecetasManager().getIngredientes()[recipeId].nombre
+            listener?.onIngredientClick(ingredient)
+        }
 
     }
 }

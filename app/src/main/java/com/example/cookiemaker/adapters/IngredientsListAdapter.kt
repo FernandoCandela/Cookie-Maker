@@ -13,21 +13,24 @@ class IngredientsListAdapter(
     private val listener: (Int) -> Unit
 ) : RecyclerView.Adapter<IngredientsListAdapter.ViewHolder>() {
 
-    class ViewHolder( view: View, val listener : (Int)->Unit) : RecyclerView.ViewHolder(view), View.OnClickListener{
+    class ViewHolder(view: View, val listener: (Int) -> Unit) : RecyclerView.ViewHolder(view),
+        View.OnClickListener {
         val tviNewRecipeIngredient: TextView
 
         init {
             tviNewRecipeIngredient = view.findViewById(R.id.tviNewRecipeIngredient)
             view.setOnClickListener(this)
         }
+
         override fun onClick(v: View?) {
             listener(adapterPosition)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_new_recipe_ingredient, parent, false)
-        val viewHolder = ViewHolder(view,listener)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_new_recipe_ingredient, parent, false)
+        val viewHolder = ViewHolder(view, listener)
         return viewHolder
     }
 

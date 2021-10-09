@@ -7,8 +7,10 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.cookiemaker.fragments.AddRecipeFragment
 import com.example.cookiemaker.fragments.RecipesFragment
+import pe.edu.ulima.pm.ulgamestore.model.Receta
 
-class MainActivity : AppCompatActivity(), AddRecipeFragment.OnAddRecipeClicked {
+class MainActivity : AppCompatActivity(), AddRecipeFragment.OnAddRecipeClicked,
+    RecipesFragment.OnRecipeClicked {
 
     private val fragments = mutableListOf<Fragment>()
 
@@ -27,25 +29,33 @@ class MainActivity : AppCompatActivity(), AddRecipeFragment.OnAddRecipeClicked {
         ft.commit()
 
     }
-    
+
     override fun onAddRecipeClick() {
         val intent: Intent = Intent()
         intent.setClass(this, NewRecipeActivity::class.java)
         val bundle: Bundle = Bundle()
-        bundle.putString("username",username)
-        intent.putExtra("data",bundle)
-        startActivityForResult(intent,10)
+        bundle.putString("username", username)
+        intent.putExtra("data", bundle)
+        startActivityForResult(intent, 10)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if( requestCode == 10){
-            if(resultCode == RESULT_OK) {
+        if (requestCode == 10) {
+            if (resultCode == RESULT_OK) {
 
                 val ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.flaContent, RecipesFragment())
                 ft.commit()
             }
         }
+    }
+
+    override fun onRecipeClick(recipeId: Int) {
+        val intent: Intent = Intent(this, ViewRecipeActivity::class.java)
+        val bundle: Bundle = Bundle()
+        bundle.putInt("id", recipeId)
+        intent.putExtra("data", bundle)
+        startActivity(intent)
     }
 }

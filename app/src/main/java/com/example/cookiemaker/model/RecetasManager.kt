@@ -16,17 +16,17 @@ class RecetasManager {
     }
 
     companion object {
-        private var instance : RecetasManager? = null
+        private var instance: RecetasManager? = null
     }
 
-    fun getInstance() : RecetasManager {
+    fun getInstance(): RecetasManager {
         if (instance == null) {
             instance = RecetasManager()
         }
         return instance!!
     }
 
-    fun getRecetas() : List<Receta> {
+    fun getRecetas(): List<Receta> {
         //mRecetas.add(Receta(1,"Galleta Chocolate","Fernando",mIngredientes))
         //mRecetas.add(Receta(2,"Galleta Vainilla","Renato",mIngredientes))
         //mRecetas.add(Receta(3,"Happy Brownie","Piero",mIngredientes))
@@ -35,17 +35,17 @@ class RecetasManager {
         return mRecetas
     }
 
-    fun addReceta(receta : Receta) {
+    fun addReceta(receta: Receta) {
         mRecetas.add(receta)
         Log.i("recetasadd", mRecetas.toString())
     }
 
-    fun getReceta(id : Int) : Receta? {
-        // Debe implementarlo !!!
-        return null
+    fun getReceta(id: Int): Receta? {
+        return mRecetas[id]
+
     }
 
-    fun getIngredientes() : List<Ingrediente> {
+    fun getIngredientes(): List<Ingrediente> {
         return mIngredientes
     }
 

@@ -13,7 +13,7 @@ import com.example.cookiemaker.fragments.IngredientsFragment
 import com.example.cookiemaker.fragments.NewRecipeIngredientsFragment
 import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
-class IngredientsActivity : AppCompatActivity() , IngredientsFragment.OnIngredientClicked {
+class IngredientsActivity : AppCompatActivity(), IngredientsFragment.OnIngredientClicked {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +26,12 @@ class IngredientsActivity : AppCompatActivity() , IngredientsFragment.OnIngredie
 
     }
 
-    override fun onIngredientClick(ingredient : String) {
-        val intent : Intent = Intent()
-        val bundle : Bundle = Bundle()
+    override fun onIngredientClick(ingredient: String) {
+        val intent: Intent = Intent()
+        val bundle: Bundle = Bundle()
         bundle.putString("nombre", ingredient)
-        intent.putExtra("data",bundle)
-        setResult(RESULT_OK,intent)
+        intent.putExtra("data", bundle)
+        setResult(RESULT_OK, intent)
         finish()
     }
 }

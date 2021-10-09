@@ -11,12 +11,13 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.cookiemaker.R
 import com.example.cookiemaker.adapters.RecipesListAdapter
+import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
 class NewRecipeFragment : Fragment() {
 
     interface OnIngredientsClicked {
         fun OnIngredientsClick()
-        fun OnSaveClick(newRecipeName: String)
+        fun OnSaveClick(newRecipeName: String,id:Int)
     }
 
     private var listener: OnIngredientsClicked? = null
@@ -44,7 +45,12 @@ class NewRecipeFragment : Fragment() {
         butSave.setOnClickListener { _: View ->
             //boton de guardar
             //val id = RecipesListAdapter().getItemCount() +1
-            listener?.OnSaveClick(eteNewRecipeName.text.toString())
+            var id = RecetasManager().getInstance().getRecetas().size
+            if(id!=0){
+                id=id-1
+            }
+
+            listener?.OnSaveClick(eteNewRecipeName.text.toString(),id)
 
         }
 

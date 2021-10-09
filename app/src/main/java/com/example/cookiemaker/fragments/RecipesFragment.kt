@@ -1,5 +1,6 @@
 package com.example.cookiemaker.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,12 +14,26 @@ import pe.edu.ulima.pm.ulgamestore.model.Receta
 import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
 class RecipesFragment : Fragment() {
+
+    interface OnRecipeClicked {
+        fun onRecipeClick(recipeId: Int)
+    }
+
+    private var listener: OnRecipeClicked? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        listener = context as? OnRecipeClicked
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_recipes,container,false)
+        return inflater.inflate(R.layout.fragment_recipes, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,9 +42,10 @@ class RecipesFragment : Fragment() {
         val rviRecipes = view.findViewById<RecyclerView>(R.id.rviRecipes)
         rviRecipes.adapter = RecipesListAdapter(
             RecetasManager().getInstance().getRecetas(),
-            {recipeId : Int ->
+            { recipeId: Int ->
+                Log.i("recipeId",recipeId.toString())
+                listener?.onRecipeClick(recipeId)
 
-                Log.i ( "RecipeFragment",RecetasManager().getRecetas()[recipeId].toString())
             }
         )
     }
