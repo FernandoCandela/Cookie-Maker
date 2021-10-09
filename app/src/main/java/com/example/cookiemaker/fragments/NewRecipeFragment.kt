@@ -1,5 +1,6 @@
 package com.example.cookiemaker.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,17 @@ import androidx.fragment.app.Fragment
 import com.example.cookiemaker.R
 
 class NewRecipeFragment : Fragment () {
+
+    interface OnIngredientsClicked{
+        fun OnIngredientsClick()
+    }
+
+    private var listener : OnIngredientsClicked? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as? OnIngredientsClicked
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,7 +40,7 @@ class NewRecipeFragment : Fragment () {
         }
 
         butIngredients.setOnClickListener{ _ : View ->
-            //
+            listener?.OnIngredientsClick()
         }
     }
 }

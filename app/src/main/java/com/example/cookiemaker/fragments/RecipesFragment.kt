@@ -29,7 +29,7 @@ class RecipesFragment : Fragment() {
             RecetasManager().getRecetas(),
             {recipeId : Int ->
 
-                Log.i ( "RecipeFragment",recipeId.toString())
+                Log.i ( "RecipeFragment",RecetasManager().getRecetas()[recipeId].toString())
             }
         )
     }

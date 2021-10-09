@@ -15,7 +15,7 @@ class RecipesListAdapter(
 ) :
     RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View,val listener : (Int)->Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    class ViewHolder(view: View, val listener : (Int)->Unit) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val iviRecipeImage: ImageView
         val tviUserName: TextView
         val tviRecipeName: TextView

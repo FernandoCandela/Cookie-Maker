@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookiemaker.R
-import com.example.cookiemaker.adapters.NewRecipesIngredientsListAdapter
-import com.example.cookiemaker.adapters.RecipesListAdapter
+import com.example.cookiemaker.adapters.NewRecipeIngredientsAdapter
 import pe.edu.ulima.pm.ulgamestore.model.RecetasManager
 
 class NewRecipeIngredientsFragment : Fragment() {
@@ -24,6 +23,8 @@ class NewRecipeIngredientsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val rviRecipeIngredient = view.findViewById<RecyclerView>(R.id.rviRecipeIngredients)
+        rviRecipeIngredient.adapter = NewRecipeIngredientsAdapter( RecetasManager().getIngredientes())
 
     }
 }

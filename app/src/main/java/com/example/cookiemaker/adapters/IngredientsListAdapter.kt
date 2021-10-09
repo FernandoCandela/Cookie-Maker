@@ -8,30 +8,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cookiemaker.R
 import pe.edu.ulima.pm.ulgamestore.model.Ingrediente
 
-class NewRecipesIngredientsListAdapter(
-    private val newRecipesIngredientsList: List<Ingrediente>
-) : RecyclerView.Adapter<NewRecipesIngredientsListAdapter.ViewHolder>() {
+class IngredientsListAdapter(
+    private val ingredientstList: List<Ingrediente>,
+    private val listener: (Int) -> Unit
+) : RecyclerView.Adapter<IngredientsListAdapter.ViewHolder>() {
 
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        val tviNewRecipeIngredient : TextView
+    class ViewHolder( view: View, val listener : (Int)->Unit) : RecyclerView.ViewHolder(view), View.OnClickListener{
+        val tviNewRecipeIngredient: TextView
 
-        init{
+        init {
             tviNewRecipeIngredient = view.findViewById(R.id.tviNewRecipeIngredient)
+            view.setOnClickListener(this)
+        }
+        override fun onClick(v: View?) {
+            listener(adapterPosition)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_new_recipe_ingredient, parent, false)
-        val viewHolder = ViewHolder(view)
+        val viewHolder = ViewHolder(view,listener)
         return viewHolder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tviNewRecipeIngredient.text = newRecipesIngredientsList[position].nombre
+        holder.tviNewRecipeIngredient.text = ingredientstList[position].nombre
     }
 
     override fun getItemCount(): Int {
-        return newRecipesIngredientsList.size
+        return ingredientstList.size
     }
 
 }
