@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import com.example.cookiemaker.fragments.AddRecipeFragment
 import com.example.cookiemaker.fragments.RecipesFragment
 import pe.edu.ulima.pm.ulgamestore.model.Receta
-
+/*
+    Integrantes:
+       - Fernando Candela 20171937
+       - Renatto Pantoja 20162365
+*/
 class MainActivity : AppCompatActivity(), AddRecipeFragment.OnAddRecipeClicked,
     RecipesFragment.OnRecipeClicked {
 

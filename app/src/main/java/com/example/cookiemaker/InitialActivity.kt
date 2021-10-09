@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 /*
     Integrantes:
-       - Fernando Candela
-       - Renatto Pantoja
+       - Fernando Candela 20171937
+       - Renatto Pantoja 20162365
 */
 
 class InitialActivity : AppCompatActivity() {
