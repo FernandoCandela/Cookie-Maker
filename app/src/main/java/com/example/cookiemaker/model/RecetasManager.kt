@@ -25,10 +25,10 @@ class RecetasManager {
     }
 
     fun getRecetas() : List<Receta> {
-        mRecetas.add(Receta(1,"Galleta Chocolate","ren",mIngredientes))
-        mRecetas.add(Receta(2,"Galleta Vainilla","ren",mIngredientes))
-        mRecetas.add(Receta(3,"Happy Brownie","ren",mIngredientes))
-        mRecetas.add(Receta(4,"Cheesecake","ren",mIngredientes))
+        mRecetas.add(Receta(1,"Galleta Chocolate","Fernando",mIngredientes))
+        mRecetas.add(Receta(2,"Galleta Vainilla","Renato",mIngredientes))
+        mRecetas.add(Receta(3,"Happy Brownie","Piero",mIngredientes))
+        mRecetas.add(Receta(4,"Cheesecake","Rodrigo",mIngredientes))
 
         return mRecetas
     }

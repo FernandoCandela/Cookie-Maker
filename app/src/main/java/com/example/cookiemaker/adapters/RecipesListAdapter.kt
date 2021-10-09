@@ -41,6 +41,16 @@ class RecipesListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tviUserName.text = recipesList[position].usuario
         holder.tviRecipeName.text = recipesList[position].nombre
+        val rnds = (1..4).random();
+        when (rnds) {
+            1 -> holder.iviRecipeImage.setImageResource(R.drawable.galletas1)
+            2 -> holder.iviRecipeImage.setImageResource(R.drawable.galletas2)
+            3 -> holder.iviRecipeImage.setImageResource(R.drawable.galletas3)
+            4 -> holder.iviRecipeImage.setImageResource(R.drawable.galletas4)
+        }
+        //holder.iviRecipeImage.getLayoutParams().width = 300;
+        //holder.iviRecipeImage.getLayoutParams().height = 300;
+
     }
 
     override fun getItemCount(): Int {
